@@ -32,7 +32,13 @@ class Factory extends BaseFakerFactory
             return $providerClass;
         }
 
-        throw new \InvalidArgumentException(sprintf('Unable to find provider "%s" with locale "%s"', $provider, $locale));
+        throw new \InvalidArgumentException(
+            sprintf(
+                'Unable to find provider "%s" with locale "%s"',
+                $provider,
+                $locale
+            )
+        );
     }
 
     /**
@@ -42,7 +48,13 @@ class Factory extends BaseFakerFactory
      */
     protected static function extFindProviderClassname($provider, $locale = '')
     {
-        $providerClass = 'App\\Classes\\ExtFaker\\' . ($locale ? sprintf('Provider\%s\%s', $locale, $provider) : sprintf('Provider\%s', $provider));
+        $providerClass =
+            'App\\Classes\\ExtFaker\\' .
+            (
+                $locale ?
+                sprintf('Provider\%s\%s', $locale, $provider) :
+                sprintf('Provider\%s', $provider)
+            );
         if (class_exists($providerClass, true)) {
             return $providerClass;
         }
