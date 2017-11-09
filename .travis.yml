@@ -10,6 +10,5 @@ before_script:
   - php artisan key:generate
 
 script:
-  - composer dump-autoload
   - vendor/bin/phpunit
   - vendor/bin/phpcs app --standard=PSR2
