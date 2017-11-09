@@ -1,7 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-
+use App\Modules\Event\Event;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
