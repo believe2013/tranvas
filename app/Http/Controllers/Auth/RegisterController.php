@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -66,6 +70,20 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'is_active' => 0
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param mixed $user
+     * @return RedirectResponse
+     */
+    protected function registered(Request $request, $user)
+    {
+        Auth::logout();
+        return redirect()->route('welcome');
+    }
+
+
 }
