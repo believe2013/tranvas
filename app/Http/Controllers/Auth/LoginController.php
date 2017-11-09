@@ -46,6 +46,4 @@ class LoginController extends Controller
     {
         return array_merge($request->only($this->username(), 'password'), ['is_active' => 1]);
     }
-
-
 }
