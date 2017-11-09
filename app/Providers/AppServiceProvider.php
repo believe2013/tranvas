@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(\Faker\Generator::class, function () {
             $faker = \App\Classes\ExtFaker\Factory::create('ru_RU');
-            $faker->addProvider(new \App\Classes\ExtFaker\Provider\ru_Ru\Lorem($faker));
+            $faker->addProvider(new \App\Classes\ExtFaker\Provider\ru_RU\Lorem($faker));
             return $faker;
         });
 
