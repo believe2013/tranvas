@@ -13,12 +13,17 @@
 
 
 
-
 Route::get('/', 'HomeController@home')->name('welcome');
 
-Route::get('events', 'Event\EventController@index')->name('events');
-Route::get('events/view/{event}', 'Event\EventController@view')->name('event-view');
+Route::group(['middleware' => 'auth'], function () {
+    /**
+     * Event related routes
+     */
+    Route::get('events', 'Event\EventController@index')->name('events');
+    Route::get('events/view/{event}', 'Event\EventController@view')->name('event-view');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/home', 'HomeController@home')->name('home');
