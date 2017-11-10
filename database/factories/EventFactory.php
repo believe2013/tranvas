@@ -3,14 +3,18 @@
 use App\Modules\Event\Event;
 use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 $factory->define(Event::class, function (Faker $faker) {
-    $start_date = \Carbon\Carbon::now()->addDays($faker->randomElement([1,2,3,4,5,6,7,8,9]));
+    $start_date = Carbon::now()->addDays($faker->randomElement([1,2,3,4,5,6,7,8,9]));
     $end_date = $start_date->copy()->addDays($faker->randomElement([1,2,3,4,5,6,7,8,9]));
+    $title = $faker->sentence(3);
 
     return [
-        'title' => $faker->sentence(3),
-        'description' => $faker->paragraph(5),
+        'title' => $title,
+        'slug' => Str::slug($title) . '-' . uniqid(time()),
+        'description' => $faker->paragraph($faker->numberBetween(2, 10)),
         'address' => $faker->address,
         'lat' => $faker->latitude,
         'long' => $faker->longitude,

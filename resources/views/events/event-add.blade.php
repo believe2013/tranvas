@@ -69,8 +69,9 @@
 
 
 @section('footer-script')
+    <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <script>
-
+        CKEDITOR.replace("description");
     </script>
 @endsection
 

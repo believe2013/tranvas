@@ -13,7 +13,7 @@
                 <div class="panel-body">
                     <div class="description">
                         <p><strong>Описание:</strong></p>
-                        {{$event->description}}
+                        {!! $event->description !!}
                     </div>
                 </div>
 

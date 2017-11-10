@@ -11,7 +11,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-heading">
-                            <a href="{{route('event-view', $upcomingEvent->id)}}">{{$upcomingEvent->title}}</a>
+                            <a href="{{route('event-view', $upcomingEvent->slug)}}">{{$upcomingEvent->title}}</a>
                         </h3>
                         <small class="padding-left-10">{{$upcomingEvent->address}}</small>
                     </div>
@@ -24,7 +24,7 @@
                             <strong>Создатель:</strong> {{$upcomingEvent->user->name}}
                         </div>
                         <div class="description">
-                            {{$upcomingEvent->description}}
+                            {!! \Illuminate\Support\Str::words($upcomingEvent->description, 50, ' ...') !!}
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-heading">
-                                <a href="{{route('event-view', $pastEvent->id)}}">{{$pastEvent->title}}</a>
+                                <a href="{{route('event-view', $pastEvent->slug)}}">{{$pastEvent->title}}</a>
                             </h3>
                             <small class="padding-left-10">{{$pastEvent->address}}</small>
                         </div>
@@ -54,7 +54,7 @@
                                 <strong>Создатель:</strong> {{$pastEvent->user->name}}
                             </div>
                             <div class="description">
-                                {{$pastEvent->description}}
+                                {!! $pastEvent->description !!}
                             </div>
                         </div>
                     </div>

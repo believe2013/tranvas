@@ -16,6 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string("title");
+            $table->string("slug");
             $table->text("description");
             $table->string("address");
             $table->float("lat", 10,6);
