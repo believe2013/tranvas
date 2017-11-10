@@ -17,7 +17,18 @@
                     </div>
                 </div>
 
-                <div id="map"></div>
+                {{--<div id="map"></div>--}}
+                <gmap-map
+                        :center="{{ json_encode([ 'lat' => $event->lat, 'lng' => $event->long ]) }}"
+                        :zoom="6"
+                        style="width: 100%; height: 300px">
+                    <gmap-marker
+                            :position="{{ json_encode([ 'lat' => $event->lat, 'lng' => $event->long ]) }}"
+                            :clickable="true"
+                            :draggable="false"
+                            @click="center={{ json_encode([ 'lat' => $event->lat, 'lng' => $event->long ]) }}"
+                    ></gmap-marker>
+                </gmap-map>
 
                 <table class="table table-bordered table-hover table-striped">
                     <tbody>
@@ -49,31 +60,16 @@
 
 @section('footer-script')
     <script>
-        function initMap() {
-            var uluru = {
-                lat: {{$event->lat}}, lng: {{$event->long}}
-            };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: uluru
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            })
-        }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhMSQwxM6kVM_c3FXe1KRP37aatSovV7M&callback=initMap">
+
     </script>
 @endsection
 
 
 @section('header-styles')
     <style>
-        #map {
+        /*#map {
             height: 400px;
             width: 100%;
-        }
+        }*/
     </style>
 @endsection

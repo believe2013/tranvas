@@ -16,27 +16,27 @@
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="title">Название события</label>
-                            <input type="text" id="title" class="form-control" placeholder="Введите название">
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Введите название">
                             <span class="error">{{$errors->first('title')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="address">Адрес</label>
-                            <input type="text" id="address" class="form-control" placeholder="Введите адрес">
+                            <input type="text" name="address" id="address" class="form-control" placeholder="Введите адрес">
                             <span class="error">{{$errors->first('address')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="start_date">Дата начала</label>
-                            <input type="date" id="start_date" class="form-control" placeholder="Выберите дату">
+                            <input type="date" name="start_date" id="start_date" class="form-control" placeholder="Выберите дату">
                             <span class="error">{{$errors->first('start_date')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="end_date">Дата окончания</label>
-                            <input type="date" id="end_date" class="form-control" placeholder="Выберите дату">
+                            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Выберите дату">
                             <span class="error">{{$errors->first('end_date')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="description">Описание</label>
-                            <textarea type="text" id="description" class="form-control" placeholder="Введите название"></textarea>
+                            <textarea type="text" name="description" id="description" class="form-control" placeholder="Введите название"></textarea>
                             <span class="error">{{$errors->first('description')}}</span>
                         </div>
                         <button class="btn btn-primary">
