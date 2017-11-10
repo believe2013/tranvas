@@ -15,7 +15,17 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import * as VueGoogleMaps from 'vue2-google-maps';
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyDhMSQwxM6kVM_c3FXe1KRP37aatSovV7M',
+        librares: 'places'
+    }
+})
+
+
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('event-location', require('./components/EventLocation.vue'));
 
 const app = new Vue({
     el: '#app'
