@@ -8,15 +8,13 @@ services:
 
 sudo: true
 
-#before_install:
-
+before_install:
+  - mysql -e 'CREATE DATABASE myapp_test;'
 
 before_script:
   - composer install --prefer-dist --no-interaction
   - cp .env.travis .env
   - php artisan key:generate
-  - bash .travis.install-mysql-5.7.sh
-  - mysql -e 'CREATE DATABASE myapp_test;'
 
 script:
   - vendor/bin/phpunit --debug
