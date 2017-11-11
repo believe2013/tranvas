@@ -41,7 +41,7 @@ class EventTest extends TestCase
             ->get(route('events'))
             ->assertStatus(200)
             ->assertSeeText($event->title)
-            ->assertSeeText(Str::words($event->description, 50));
+            ->assertSeeText(Str::words($event->description, 50, ' '));
     }
 
     /** @test */
