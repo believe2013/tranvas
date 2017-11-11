@@ -6,8 +6,6 @@ php:
 services:
   - mysql
 
-sudo: true
-
 before_install:
   - mysql -e 'CREATE DATABASE myapp_test;'
 
