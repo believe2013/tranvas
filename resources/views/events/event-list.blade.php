@@ -5,7 +5,10 @@
 
     <div class="row">
         <div class="col-sm-8 col-sm-push-2">
-            <h1>Будущие события</h1>
+            <h1>
+                Будущие события
+                <a href="{{route('event-add')}}" class="btn btn-success">Добавить событие</a>
+            </h1>
 
             @foreach($upcomingEvents as $upcomingEvent)
                 <div class="panel panel-default">

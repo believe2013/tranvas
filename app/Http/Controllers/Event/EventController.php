@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
@@ -71,6 +72,7 @@ class EventController extends Controller
 
         Event::create([
             'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('title')) . '-' . uniqid(time()),
             'description' => $request->input('description'),
             'address' => $request->input('address'),
             'start_date' => $request->input('start_date'),
@@ -80,6 +82,6 @@ class EventController extends Controller
             'user_id' => $request->user()->id,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('events');
     }
 }
