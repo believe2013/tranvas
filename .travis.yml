@@ -8,7 +8,8 @@ services:
 
 before_install:
   - sudo service mysql stop || sudo service mysql-5.6 stop || sudo stop mysql-5.6 || sudo stop mysql || echo "failed to stop mysql"
-  - sudo docker run -i -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=secret -t cytopia/mysql-5.7 # or whatever version mysql:5.6 mysql:5.5 mysql:5.8 or your custom mysql image
+  - sudo docker run -d -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 mysql:5.7 # or whatever version mysql:5.6 mysql:5.5 mysql:5.8 or your custom mysql image
+#  - sudo docker run -i -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=secret -t cytopia/mysql-5.7
   - mysql --user=root --password=secret --host=127.0.0.1 -e  'CREATE DATABASE app_test;'
 
 before_script:
