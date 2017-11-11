@@ -15,5 +15,6 @@ before_script:
   - php artisan key:generate
 
 script:
+  - mysql –version
   - vendor/bin/phpunit --debug
   - vendor/bin/phpcs app --standard=PSR2
