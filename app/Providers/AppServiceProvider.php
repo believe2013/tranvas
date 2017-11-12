@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Modules\Event\Repositories\EventRepository;
+use App\Modules\Event\Repositories\IEventRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +26,6 @@ class AppServiceProvider extends ServiceProvider
             return $faker;
         });
 
-
         Schema::defaultStringLength(191);
     }
 
@@ -35,6 +36,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(IEventRepository::class, EventRepository::class);
     }
 }

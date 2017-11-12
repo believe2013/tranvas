@@ -2,6 +2,7 @@
 namespace App\Modules\Event\Http\Controllers;
 
 use App\Modules\Event\Event;
+use App\Modules\Event\Repositories\IEventRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,19 +11,25 @@ use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
+    private $events;
+
+    /**
+     * EventController constructor.
+     * @param IEventRepository $eventRepository
+     */
+    public function __construct(IEventRepository $eventRepository)
+    {
+        $this->events = $eventRepository;
+    }
+
     /**
      * @return $this
      */
     public function index()
     {
-        $today = Carbon::today()->format('Y-m-d');
-        $upcomingEvents = Event::where('end_date', '>', $today)
-            ->orderBy('start_date', 'desc')
-            ->get();
-        $pastEvents = Event::where('end_date', '<', $today)
-            ->orderBy('start_date', 'desc')
-            ->limit(3)
-            ->get();
+        $upcomingEvents = $this->events->getUpcomingEvents();
+
+        $pastEvents = $this->events->getPastEvents();
 
         return view('events.event-list')
             ->with('upcomingEvents', $upcomingEvents)
