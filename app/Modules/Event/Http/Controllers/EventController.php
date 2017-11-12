@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\Event;
+namespace App\Modules\Event\Http\Controllers;
 
 use App\Modules\Event\Event;
 use Carbon\Carbon;
@@ -18,16 +17,16 @@ class EventController extends Controller
     {
         $today = Carbon::today()->format('Y-m-d');
         $upcomingEvents = Event::where('end_date', '>', $today)
-                                ->orderBy('start_date', 'desc')
-                                ->get();
+            ->orderBy('start_date', 'desc')
+            ->get();
         $pastEvents = Event::where('end_date', '<', $today)
             ->orderBy('start_date', 'desc')
             ->limit(3)
             ->get();
 
         return view('events.event-list')
-                    ->with('upcomingEvents', $upcomingEvents)
-                    ->with('pastEvents', $pastEvents);
+            ->with('upcomingEvents', $upcomingEvents)
+            ->with('pastEvents', $pastEvents);
     }
 
     /**
